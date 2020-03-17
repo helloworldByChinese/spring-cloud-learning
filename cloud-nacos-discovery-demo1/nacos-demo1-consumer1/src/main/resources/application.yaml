@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: demo1-consumer1 # spring 应用名
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 # Nacos 服务器地址
+        namespace: ca53d938-238a-489c-8232-6d3ef954ac7a
+
+server:
+  port: 8081 # 服务器端口。默认为 8080
