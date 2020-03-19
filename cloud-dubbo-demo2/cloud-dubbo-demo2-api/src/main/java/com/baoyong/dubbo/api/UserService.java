@@ -10,6 +10,12 @@ public interface UserService {
 
     UserDto getUserInfo(Integer id);
 
-    Integer insertUserInfo(UserDto userDto);
+    /**
+     * 新增用户
+     *
+     * @param userDto user
+     * @return Integer
+     */
+    Integer addUserInfo(UserDto userDto);
 
 }

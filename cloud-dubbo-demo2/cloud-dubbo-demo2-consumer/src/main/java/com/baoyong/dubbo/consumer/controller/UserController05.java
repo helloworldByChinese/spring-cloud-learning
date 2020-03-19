@@ -1,6 +1,7 @@
 package com.baoyong.dubbo.consumer.controller;
 
 import com.baoyong.dubbo.api.UserService;
+import com.baoyong.dubbo.consumer.config.exception.ServiceException;
 import com.baoyong.dubbo.dto.UserDto;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2020/03/19
  **/
 @RestController
-@RequestMapping("/user04")
-public class UserController04 {
-    @Reference(version = "1.0.0", protocol = "dubbo")
+@RequestMapping("/user05")
+public class UserController05 {
+    @Reference(version = "1.0.0", protocol = "dubbo", validation = "true")
     private UserService userService;
 
     @GetMapping("/get")
@@ -26,5 +27,13 @@ public class UserController04 {
     @PostMapping("/add")
     public Integer addUser(UserDto userDto) {
         return userService.addUserInfo(userDto);
+    }
+
+    @GetMapping("/exception")
+    public Integer getException() {
+        if (true) {
+            throw new ServiceException(406, "阿伟死了");
+        }
+        return 0;
     }
 }
